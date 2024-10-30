@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>DesignPro Home</h1>
+
+  <p>Welcome to <em>DesignPro</em>, a very simple Django website developed in connection with educational practice (help).</p>
+
+<h2>Dynamic content</h2>
+
+  <p>The number of records at a given moment:</p>
+  <ul>
+    <li><strong>Applications:</strong> {{num_applications}}</li>
+    <li><strong>Сategories:</strong> {{num_categoris}}</li>
+  </ul>
+
+<p>
+  You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{%
+  else %} times{% endif %}.
+</p>
+
+{% endblock %}
