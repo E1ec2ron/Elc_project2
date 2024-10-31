@@ -1,4 +1,4 @@
-<!doctype html>
+<!Doctype html>
 <html lang="en">
   <head>
     {% block title %}<title>Local Library</title>{% endblock %}
@@ -10,7 +10,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <!-- Добавление дополнительного статического CSS файла -->
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
   </head>
@@ -22,8 +21,12 @@
           {% block sidebar %}
             <ul class="sidebar-nav">
               <li><a href="{% url 'index' %}">Home</a></li>
-              <li><a href="">Что-то там</a></li>
-              <li><a href="">Что-то там 2</a></li>
+              <li><a href="">Что-то там 2</a></li><br>
+              {% if user.is_authenticated %}
+              <li><a href="{% url 'profile' %}">Профиль</a></li>
+              {% else %}
+              <li><a href="{% url 'registration' %}">Зарегистрироваться</a></li>
+              {% endif %}
               {% if user.is_authenticated %}
               <li>User: {{ user.get_username }}</li>
               <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>

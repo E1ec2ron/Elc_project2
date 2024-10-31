@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Application, CategoryApplic
 from django.contrib.auth.forms import UserCreationForm
+from django.views import generic
 
 def index(request):
     num_applications = Application.objects.all().count()
@@ -17,3 +18,6 @@ def registration(request):
     else:
         form = UserCreationForm()
     return render(request, template_name='register.html', context={'form': form})
+
+class ProfilePage(generic.ListView):
+        model = Application
